@@ -1,0 +1,454 @@
+09-03 17:06:24 - Using analytical normalization from Fourier series solution
+09-03 17:06:25 - UNet(
+  (ConvsDown): ModuleList(
+    (0): _ConvBlock(
+      (encode): Sequential(
+        (0): Conv2d(1, 30, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): ReLU()
+        (2): Conv2d(30, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): ReLU()
+      )
+    )
+    (1): _ConvBlock(
+      (encode): Sequential(
+        (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+        (1): Conv2d(20, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (2): ReLU()
+        (3): Conv2d(20, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (4): ReLU()
+      )
+    )
+    (2): _ConvBlock(
+      (encode): Sequential(
+        (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+        (1): Conv2d(20, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (2): ReLU()
+        (3): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (4): ReLU()
+        (5): Conv2d(16, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (6): ReLU()
+      )
+    )
+    (3): _ConvBlock(
+      (encode): Sequential(
+        (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+        (1): Conv2d(20, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (2): ReLU()
+        (3): Conv2d(20, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (4): ReLU()
+      )
+    )
+  )
+  (ConvBottom): _ConvBlock(
+    (encode): Sequential(
+      (0): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (1): Conv2d(20, 60, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (2): ReLU()
+      (3): Conv2d(60, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (4): ReLU()
+      (5): Upsample(size=12, mode='nearest')
+    )
+  )
+  (ConvsUp): ModuleList(
+    (0): _ConvBlock(
+      (encode): Sequential(
+        (0): Conv2d(40, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): ReLU()
+        (2): Conv2d(20, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): ReLU()
+        (4): Upsample(size=25, mode='nearest')
+      )
+    )
+    (1): _ConvBlock(
+      (encode): Sequential(
+        (0): Conv2d(40, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): ReLU()
+        (2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): ReLU()
+        (4): Conv2d(16, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (5): ReLU()
+        (6): Upsample(size=50, mode='nearest')
+      )
+    )
+    (2): _ConvBlock(
+      (encode): Sequential(
+        (0): Conv2d(40, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): ReLU()
+        (2): Conv2d(20, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): ReLU()
+        (4): Upsample(size=101, mode='nearest')
+      )
+    )
+    (3): _ConvBlock(
+      (encode): Sequential(
+        (0): Conv2d(40, 30, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): ReLU()
+        (2): Conv2d(30, 1, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+    )
+  )
+)
+Trainable parameters: 93773
+Number of branches of the network: 5
+Global properties of each scale: 
+           |   RF_x   |   RF_y   |  Depth   | nparams  | k-size-x | k-size-y |
+Branch 0   |         8|         8|         4|     16821|         3|         3|
+Branch 1   |        16|        16|         4|     18080|         3|         3|
+Branch 2   |        48|        48|         6|     19112|         3|         3|
+Branch 3   |        64|        64|         4|     18080|         3|         3|
+Branch 4   |        64|        64|         2|     21680|         3|         3|
+Total      |       201|       201|        20|     93773|
+09-03 17:06:26 - Warning: There's no GPU available on this machine,training will be performed on CPU.
+09-03 17:09:54 - epoch                      : 1
+09-03 17:09:54 - loss                       : 2.793e+04
+09-03 17:09:54 - DirichletBoundaryLoss      : 3.124e+03
+09-03 17:09:54 - LaplacianLoss              : 2.481e+04
+09-03 17:09:54 - residual                   : 3.777e+02
+09-03 17:09:54 - inf_norm                   : 2.593e+03
+09-03 17:09:54 - Eresidual                  : 1.633e+05
+09-03 17:09:54 - Einf_norm                  : 1.522e+06
+09-03 17:09:54 - LearningRate               : 4.000e-04
+09-03 17:09:54 - val_loss                   : 4.361e+03
+09-03 17:09:54 - val_DirichletBoundaryLoss  : 4.707e+02
+09-03 17:09:54 - val_LaplacianLoss          : 3.891e+03
+09-03 17:09:54 - val_residual               : 3.057e+02
+09-03 17:09:54 - val_inf_norm               : 2.233e+03
+09-03 17:09:54 - val_Eresidual              : 1.007e+05
+09-03 17:09:54 - val_Einf_norm              : 1.140e+06
+09-03 17:09:54 - 
+09-03 17:09:54 - Saving current best: model_best.pth ...
+09-03 17:13:06 - epoch                      : 2
+09-03 17:13:06 - loss                       : 1.765e+03
+09-03 17:13:06 - DirichletBoundaryLoss      : 1.664e+02
+09-03 17:13:06 - LaplacianLoss              : 1.599e+03
+09-03 17:13:06 - residual                   : 1.372e+02
+09-03 17:13:06 - inf_norm                   : 1.205e+03
+09-03 17:13:06 - Eresidual                  : 4.754e+04
+09-03 17:13:06 - Einf_norm                  : 5.492e+05
+09-03 17:13:06 - LearningRate               : 4.000e-04
+09-03 17:13:06 - val_loss                   : 7.904e+02
+09-03 17:13:06 - val_DirichletBoundaryLoss  : 4.715e+01
+09-03 17:13:06 - val_LaplacianLoss          : 7.432e+02
+09-03 17:13:06 - val_residual               : 7.695e+01
+09-03 17:13:06 - val_inf_norm               : 6.688e+02
+09-03 17:13:06 - val_Eresidual              : 2.744e+04
+09-03 17:13:06 - val_Einf_norm              : 2.930e+05
+09-03 17:13:06 - 
+09-03 17:13:07 - Saving current best: model_best.pth ...
+09-03 17:16:16 - epoch                      : 3
+09-03 17:16:16 - loss                       : 5.963e+02
+09-03 17:16:16 - DirichletBoundaryLoss      : 3.344e+01
+09-03 17:16:16 - LaplacianLoss              : 5.628e+02
+09-03 17:16:16 - residual                   : 7.125e+01
+09-03 17:16:16 - inf_norm                   : 6.027e+02
+09-03 17:16:16 - Eresidual                  : 2.549e+04
+09-03 17:16:16 - Einf_norm                  : 2.698e+05
+09-03 17:16:16 - LearningRate               : 4.000e-04
+09-03 17:16:16 - val_loss                   : 4.311e+02
+09-03 17:16:16 - val_DirichletBoundaryLoss  : 2.383e+01
+09-03 17:16:16 - val_LaplacianLoss          : 4.073e+02
+09-03 17:16:16 - val_residual               : 4.791e+01
+09-03 17:16:16 - val_inf_norm               : 5.025e+02
+09-03 17:16:16 - val_Eresidual              : 1.899e+04
+09-03 17:16:16 - val_Einf_norm              : 2.280e+05
+09-03 17:16:16 - 
+09-03 17:16:16 - Saving current best: model_best.pth ...
+09-03 17:19:54 - epoch                      : 4
+09-03 17:19:54 - loss                       : 4.390e+02
+09-03 17:19:54 - DirichletBoundaryLoss      : 2.214e+01
+09-03 17:19:54 - LaplacianLoss              : 4.169e+02
+09-03 17:19:54 - residual                   : 7.228e+01
+09-03 17:19:54 - inf_norm                   : 5.524e+02
+09-03 17:19:54 - Eresidual                  : 2.499e+04
+09-03 17:19:54 - Einf_norm                  : 2.578e+05
+09-03 17:19:54 - LearningRate               : 4.000e-04
+09-03 17:19:54 - val_loss                   : 4.478e+02
+09-03 17:19:54 - val_DirichletBoundaryLoss  : 2.233e+01
+09-03 17:19:54 - val_LaplacianLoss          : 4.255e+02
+09-03 17:19:54 - val_residual               : 9.656e+01
+09-03 17:19:54 - val_inf_norm               : 5.974e+02
+09-03 17:19:54 - val_Eresidual              : 3.070e+04
+09-03 17:19:54 - val_Einf_norm              : 2.895e+05
+09-03 17:19:54 - 
+09-03 17:23:35 - epoch                      : 5
+09-03 17:23:35 - loss                       : 3.179e+02
+09-03 17:23:35 - DirichletBoundaryLoss      : 1.614e+01
+09-03 17:23:35 - LaplacianLoss              : 3.018e+02
+09-03 17:23:35 - residual                   : 5.849e+01
+09-03 17:23:35 - inf_norm                   : 4.660e+02
+09-03 17:23:35 - Eresidual                  : 2.090e+04
+09-03 17:23:35 - Einf_norm                  : 2.324e+05
+09-03 17:23:35 - LearningRate               : 4.000e-04
+09-03 17:23:35 - val_loss                   : 3.457e+02
+09-03 17:23:35 - val_DirichletBoundaryLoss  : 1.636e+01
+09-03 17:23:35 - val_LaplacianLoss          : 3.293e+02
+09-03 17:23:35 - val_residual               : 7.883e+01
+09-03 17:23:35 - val_inf_norm               : 5.276e+02
+09-03 17:23:35 - val_Eresidual              : 2.582e+04
+09-03 17:23:35 - val_Einf_norm              : 2.513e+05
+09-03 17:23:35 - 
+09-03 17:23:35 - Saving current best: model_best.pth ...
+09-03 17:27:10 - epoch                      : 6
+09-03 17:27:10 - loss                       : 2.719e+02
+09-03 17:27:10 - DirichletBoundaryLoss      : 1.343e+01
+09-03 17:27:10 - LaplacianLoss              : 2.585e+02
+09-03 17:27:10 - residual                   : 5.638e+01
+09-03 17:27:10 - inf_norm                   : 4.466e+02
+09-03 17:27:10 - Eresidual                  : 1.996e+04
+09-03 17:27:10 - Einf_norm                  : 2.226e+05
+09-03 17:27:10 - LearningRate               : 4.000e-04
+09-03 17:27:10 - val_loss                   : 2.267e+02
+09-03 17:27:10 - val_DirichletBoundaryLoss  : 1.190e+01
+09-03 17:27:10 - val_LaplacianLoss          : 2.148e+02
+09-03 17:27:10 - val_residual               : 4.741e+01
+09-03 17:27:10 - val_inf_norm               : 3.991e+02
+09-03 17:27:10 - val_Eresidual              : 1.725e+04
+09-03 17:27:10 - val_Einf_norm              : 2.118e+05
+09-03 17:27:10 - 
+09-03 17:27:10 - Saving current best: model_best.pth ...
+09-03 17:30:31 - epoch                      : 7
+09-03 17:30:31 - loss                       : 2.552e+02
+09-03 17:30:31 - DirichletBoundaryLoss      : 1.266e+01
+09-03 17:30:31 - LaplacianLoss              : 2.426e+02
+09-03 17:30:31 - residual                   : 5.944e+01
+09-03 17:30:31 - inf_norm                   : 4.379e+02
+09-03 17:30:31 - Eresidual                  : 2.060e+04
+09-03 17:30:31 - Einf_norm                  : 2.237e+05
+09-03 17:30:31 - LearningRate               : 4.000e-04
+09-03 17:30:31 - val_loss                   : 2.205e+02
+09-03 17:30:31 - val_DirichletBoundaryLoss  : 1.117e+01
+09-03 17:30:31 - val_LaplacianLoss          : 2.094e+02
+09-03 17:30:31 - val_residual               : 5.260e+01
+09-03 17:30:31 - val_inf_norm               : 4.009e+02
+09-03 17:30:31 - val_Eresidual              : 1.849e+04
+09-03 17:30:31 - val_Einf_norm              : 2.100e+05
+09-03 17:30:31 - 
+09-03 17:30:31 - Saving current best: model_best.pth ...
+09-03 17:34:10 - epoch                      : 8
+09-03 17:34:10 - loss                       : 2.020e+02
+09-03 17:34:10 - DirichletBoundaryLoss      : 1.025e+01
+09-03 17:34:10 - LaplacianLoss              : 1.918e+02
+09-03 17:34:10 - residual                   : 5.169e+01
+09-03 17:34:10 - inf_norm                   : 3.830e+02
+09-03 17:34:10 - Eresidual                  : 1.825e+04
+09-03 17:34:10 - Einf_norm                  : 2.082e+05
+09-03 17:34:10 - LearningRate               : 4.000e-04
+09-03 17:34:10 - val_loss                   : 1.866e+02
+09-03 17:34:10 - val_DirichletBoundaryLoss  : 9.999e+00
+09-03 17:34:10 - val_LaplacianLoss          : 1.766e+02
+09-03 17:34:10 - val_residual               : 4.242e+01
+09-03 17:34:10 - val_inf_norm               : 3.730e+02
+09-03 17:34:10 - val_Eresidual              : 1.561e+04
+09-03 17:34:10 - val_Einf_norm              : 1.979e+05
+09-03 17:34:10 - 
+09-03 17:34:10 - Saving current best: model_best.pth ...
+09-03 17:37:55 - epoch                      : 9
+09-03 17:37:55 - loss                       : 1.899e+02
+09-03 17:37:55 - DirichletBoundaryLoss      : 9.092e+00
+09-03 17:37:55 - LaplacianLoss              : 1.808e+02
+09-03 17:37:55 - residual                   : 4.743e+01
+09-03 17:37:55 - inf_norm                   : 3.659e+02
+09-03 17:37:55 - Eresidual                  : 1.694e+04
+09-03 17:37:55 - Einf_norm                  : 2.027e+05
+09-03 17:37:55 - LearningRate               : 4.000e-04
+09-03 17:37:55 - val_loss                   : 1.420e+02
+09-03 17:37:55 - val_DirichletBoundaryLoss  : 7.898e+00
+09-03 17:37:55 - val_LaplacianLoss          : 1.341e+02
+09-03 17:37:55 - val_residual               : 3.222e+01
+09-03 17:37:55 - val_inf_norm               : 3.026e+02
+09-03 17:37:55 - val_Eresidual              : 1.289e+04
+09-03 17:37:55 - val_Einf_norm              : 1.901e+05
+09-03 17:37:55 - 
+09-03 17:37:55 - Saving current best: model_best.pth ...
+09-03 17:40:55 - epoch                      : 10
+09-03 17:40:55 - loss                       : 1.738e+02
+09-03 17:40:55 - DirichletBoundaryLoss      : 8.639e+00
+09-03 17:40:55 - LaplacianLoss              : 1.651e+02
+09-03 17:40:55 - residual                   : 4.988e+01
+09-03 17:40:55 - inf_norm                   : 3.627e+02
+09-03 17:40:55 - Eresidual                  : 1.750e+04
+09-03 17:40:55 - Einf_norm                  : 2.054e+05
+09-03 17:40:55 - LearningRate               : 4.000e-04
+09-03 17:40:55 - val_loss                   : 1.305e+02
+09-03 17:40:55 - val_DirichletBoundaryLoss  : 7.174e+00
+09-03 17:40:55 - val_LaplacianLoss          : 1.234e+02
+09-03 17:40:55 - val_residual               : 3.193e+01
+09-03 17:40:55 - val_inf_norm               : 3.052e+02
+09-03 17:40:55 - val_Eresidual              : 1.257e+04
+09-03 17:40:55 - val_Einf_norm              : 1.896e+05
+09-03 17:40:55 - 
+09-03 17:40:55 - Saving current best: model_best.pth ...
+09-03 17:43:57 - epoch                      : 11
+09-03 17:43:57 - loss                       : 1.568e+02
+09-03 17:43:57 - DirichletBoundaryLoss      : 7.936e+00
+09-03 17:43:57 - LaplacianLoss              : 1.489e+02
+09-03 17:43:57 - residual                   : 4.772e+01
+09-03 17:43:57 - inf_norm                   : 3.451e+02
+09-03 17:43:57 - Eresidual                  : 1.675e+04
+09-03 17:43:57 - Einf_norm                  : 1.981e+05
+09-03 17:43:57 - LearningRate               : 4.000e-04
+09-03 17:43:57 - val_loss                   : 1.164e+02
+09-03 17:43:57 - val_DirichletBoundaryLoss  : 6.610e+00
+09-03 17:43:57 - val_LaplacianLoss          : 1.098e+02
+09-03 17:43:57 - val_residual               : 3.005e+01
+09-03 17:43:57 - val_inf_norm               : 2.944e+02
+09-03 17:43:57 - val_Eresidual              : 1.185e+04
+09-03 17:43:57 - val_Einf_norm              : 1.876e+05
+09-03 17:43:57 - 
+09-03 17:43:57 - Saving current best: model_best.pth ...
+09-03 17:46:58 - epoch                      : 12
+09-03 17:46:58 - loss                       : 1.434e+02
+09-03 17:46:58 - DirichletBoundaryLoss      : 7.298e+00
+09-03 17:46:58 - LaplacianLoss              : 1.361e+02
+09-03 17:46:58 - residual                   : 4.626e+01
+09-03 17:46:58 - inf_norm                   : 3.298e+02
+09-03 17:46:58 - Eresidual                  : 1.614e+04
+09-03 17:46:58 - Einf_norm                  : 1.932e+05
+09-03 17:46:58 - LearningRate               : 4.000e-04
+09-03 17:46:58 - val_loss                   : 1.328e+02
+09-03 17:46:58 - val_DirichletBoundaryLoss  : 6.459e+00
+09-03 17:46:58 - val_LaplacianLoss          : 1.264e+02
+09-03 17:46:58 - val_residual               : 4.720e+01
+09-03 17:46:58 - val_inf_norm               : 3.221e+02
+09-03 17:46:58 - val_Eresidual              : 1.608e+04
+09-03 17:46:58 - val_Einf_norm              : 1.823e+05
+09-03 17:46:58 - 
+09-03 17:50:22 - epoch                      : 13
+09-03 17:50:22 - loss                       : 1.254e+02
+09-03 17:50:22 - DirichletBoundaryLoss      : 6.443e+00
+09-03 17:50:22 - LaplacianLoss              : 1.189e+02
+09-03 17:50:22 - residual                   : 4.188e+01
+09-03 17:50:22 - inf_norm                   : 3.061e+02
+09-03 17:50:22 - Eresidual                  : 1.484e+04
+09-03 17:50:22 - Einf_norm                  : 1.856e+05
+09-03 17:50:22 - LearningRate               : 4.000e-04
+09-03 17:50:22 - val_loss                   : 1.542e+02
+09-03 17:50:22 - val_DirichletBoundaryLoss  : 6.473e+00
+09-03 17:50:22 - val_LaplacianLoss          : 1.478e+02
+09-03 17:50:22 - val_residual               : 5.443e+01
+09-03 17:50:22 - val_inf_norm               : 3.382e+02
+09-03 17:50:22 - val_Eresidual              : 1.792e+04
+09-03 17:50:22 - val_Einf_norm              : 1.892e+05
+09-03 17:50:22 - 
+09-03 17:53:27 - epoch                      : 14
+09-03 17:53:27 - loss                       : 1.264e+02
+09-03 17:53:27 - DirichletBoundaryLoss      : 6.403e+00
+09-03 17:53:27 - LaplacianLoss              : 1.200e+02
+09-03 17:53:27 - residual                   : 4.374e+01
+09-03 17:53:27 - inf_norm                   : 3.066e+02
+09-03 17:53:27 - Eresidual                  : 1.528e+04
+09-03 17:53:27 - Einf_norm                  : 1.871e+05
+09-03 17:53:27 - LearningRate               : 4.000e-04
+09-03 17:53:27 - val_loss                   : 1.200e+02
+09-03 17:53:27 - val_DirichletBoundaryLoss  : 5.805e+00
+09-03 17:53:27 - val_LaplacianLoss          : 1.142e+02
+09-03 17:53:27 - val_residual               : 4.197e+01
+09-03 17:53:27 - val_inf_norm               : 2.794e+02
+09-03 17:53:27 - val_Eresidual              : 1.453e+04
+09-03 17:53:27 - val_Einf_norm              : 1.882e+05
+09-03 17:53:27 - 
+09-03 17:56:29 - epoch                      : 15
+09-03 17:56:29 - loss                       : 1.417e+02
+09-03 17:56:29 - DirichletBoundaryLoss      : 6.693e+00
+09-03 17:56:29 - LaplacianLoss              : 1.350e+02
+09-03 17:56:29 - residual                   : 4.766e+01
+09-03 17:56:29 - inf_norm                   : 3.214e+02
+09-03 17:56:29 - Eresidual                  : 1.631e+04
+09-03 17:56:29 - Einf_norm                  : 1.947e+05
+09-03 17:56:29 - LearningRate               : 4.000e-04
+09-03 17:56:29 - val_loss                   : 9.580e+01
+09-03 17:56:29 - val_DirichletBoundaryLoss  : 5.256e+00
+09-03 17:56:29 - val_LaplacianLoss          : 9.055e+01
+09-03 17:56:29 - val_residual               : 2.537e+01
+09-03 17:56:29 - val_inf_norm               : 2.660e+02
+09-03 17:56:29 - val_Eresidual              : 1.033e+04
+09-03 17:56:29 - val_Einf_norm              : 1.834e+05
+09-03 17:56:29 - 
+09-03 17:56:29 - Saving current best: model_best.pth ...
+09-03 17:59:39 - epoch                      : 16
+09-03 17:59:39 - loss                       : 1.047e+02
+09-03 17:59:39 - DirichletBoundaryLoss      : 5.314e+00
+09-03 17:59:39 - LaplacianLoss              : 9.940e+01
+09-03 17:59:39 - residual                   : 3.837e+01
+09-03 17:59:39 - inf_norm                   : 2.729e+02
+09-03 17:59:39 - Eresidual                  : 1.364e+04
+09-03 17:59:39 - Einf_norm                  : 1.807e+05
+09-03 17:59:39 - LearningRate               : 4.000e-04
+09-03 17:59:39 - val_loss                   : 1.889e+02
+09-03 17:59:39 - val_DirichletBoundaryLoss  : 8.217e+00
+09-03 17:59:39 - val_LaplacianLoss          : 1.807e+02
+09-03 17:59:39 - val_residual               : 7.792e+01
+09-03 17:59:39 - val_inf_norm               : 3.851e+02
+09-03 17:59:39 - val_Eresidual              : 2.396e+04
+09-03 17:59:39 - val_Einf_norm              : 1.977e+05
+09-03 17:59:39 - 
+09-03 18:02:38 - epoch                      : 17
+09-03 18:02:38 - loss                       : 1.189e+02
+09-03 18:02:38 - DirichletBoundaryLoss      : 5.632e+00
+09-03 18:02:38 - LaplacianLoss              : 1.132e+02
+09-03 18:02:38 - residual                   : 4.484e+01
+09-03 18:02:38 - inf_norm                   : 2.983e+02
+09-03 18:02:38 - Eresidual                  : 1.531e+04
+09-03 18:02:38 - Einf_norm                  : 1.861e+05
+09-03 18:02:38 - LearningRate               : 4.000e-04
+09-03 18:02:38 - val_loss                   : 1.480e+02
+09-03 18:02:38 - val_DirichletBoundaryLoss  : 5.425e+00
+09-03 18:02:38 - val_LaplacianLoss          : 1.426e+02
+09-03 18:02:38 - val_residual               : 4.932e+01
+09-03 18:02:38 - val_inf_norm               : 3.364e+02
+09-03 18:02:38 - val_Eresidual              : 1.641e+04
+09-03 18:02:38 - val_Einf_norm              : 1.857e+05
+09-03 18:02:38 - 
+09-03 18:05:39 - epoch                      : 18
+09-03 18:05:39 - loss                       : 1.019e+02
+09-03 18:05:39 - DirichletBoundaryLoss      : 4.913e+00
+09-03 18:05:39 - LaplacianLoss              : 9.702e+01
+09-03 18:05:39 - residual                   : 3.866e+01
+09-03 18:05:39 - inf_norm                   : 2.709e+02
+09-03 18:05:39 - Eresidual                  : 1.360e+04
+09-03 18:05:39 - Einf_norm                  : 1.813e+05
+09-03 18:05:39 - LearningRate               : 4.000e-04
+09-03 18:05:39 - val_loss                   : 1.240e+02
+09-03 18:05:39 - val_DirichletBoundaryLoss  : 5.490e+00
+09-03 18:05:39 - val_LaplacianLoss          : 1.185e+02
+09-03 18:05:39 - val_residual               : 5.703e+01
+09-03 18:05:39 - val_inf_norm               : 3.140e+02
+09-03 18:05:39 - val_Eresidual              : 1.826e+04
+09-03 18:05:39 - val_Einf_norm              : 1.840e+05
+09-03 18:05:39 - 
+09-03 18:08:36 - epoch                      : 19
+09-03 18:08:36 - loss                       : 1.046e+02
+09-03 18:08:36 - DirichletBoundaryLoss      : 5.010e+00
+09-03 18:08:36 - LaplacianLoss              : 9.955e+01
+09-03 18:08:36 - residual                   : 4.395e+01
+09-03 18:08:36 - inf_norm                   : 2.843e+02
+09-03 18:08:36 - Eresidual                  : 1.490e+04
+09-03 18:08:36 - Einf_norm                  : 1.812e+05
+09-03 18:08:36 - LearningRate               : 4.000e-04
+09-03 18:08:36 - val_loss                   : 9.850e+01
+09-03 18:08:36 - val_DirichletBoundaryLoss  : 5.009e+00
+09-03 18:08:36 - val_LaplacianLoss          : 9.349e+01
+09-03 18:08:36 - val_residual               : 4.057e+01
+09-03 18:08:36 - val_inf_norm               : 2.663e+02
+09-03 18:08:36 - val_Eresidual              : 1.375e+04
+09-03 18:08:36 - val_Einf_norm              : 1.729e+05
+09-03 18:08:36 - 
+09-03 18:11:55 - epoch                      : 20
+09-03 18:11:55 - loss                       : 9.227e+01
+09-03 18:11:55 - DirichletBoundaryLoss      : 4.541e+00
+09-03 18:11:55 - LaplacianLoss              : 8.773e+01
+09-03 18:11:55 - residual                   : 3.830e+01
+09-03 18:11:55 - inf_norm                   : 2.592e+02
+09-03 18:11:55 - Eresidual                  : 1.336e+04
+09-03 18:11:55 - Einf_norm                  : 1.787e+05
+09-03 18:11:55 - LearningRate               : 4.000e-04
+09-03 18:11:55 - val_loss                   : 6.603e+01
+09-03 18:11:55 - val_DirichletBoundaryLoss  : 3.718e+00
+09-03 18:11:55 - val_LaplacianLoss          : 6.231e+01
+09-03 18:11:55 - val_residual               : 2.288e+01
+09-03 18:11:55 - val_inf_norm               : 2.278e+02
+09-03 18:11:55 - val_Eresidual              : 9.196e+03
+09-03 18:11:55 - val_Einf_norm              : 1.784e+05
+09-03 18:11:55 - 
+09-03 18:11:55 - Saving current best: model_best.pth ...
+09-03 18:11:55 - Saving checkpoint: debug/models/config_4/random_8/checkpoint-epoch00020.pth ...

@@ -1,0 +1,110 @@
+name: config_4/random_8
+n_gpu: 1
+globals:
+    nnx: 101
+    nny: 101
+    xmin: 0.0
+    xmax: 0.01
+    ymin: 0.0
+    ymax: 0.01
+    coord: cart
+    verbosity: 2
+arch:
+    type: UNet
+    args:
+        input_res: 101
+        scales:
+            scale_0:
+            -   - 1
+                - 30
+                - 20
+            -   - 40
+                - 30
+                - 1
+            scale_1:
+            -   - 20
+                - 20
+                - 20
+            -   - 40
+                - 20
+                - 20
+            scale_2:
+            -   - 20
+                - 16
+                - 16
+                - 20
+            -   - 40
+                - 16
+                - 16
+                - 20
+            scale_3:
+            -   - 20
+                - 20
+                - 20
+            -   - 40
+                - 20
+                - 20
+            scale_4:
+            - 20
+            - 60
+            - 20
+        kernel_sizes: 3
+data_loader:
+    type: PoissonDataLoader
+    data_channels: 1
+    pipe_config: true
+    args:
+        data_dir: /Users/kgb/YDrive/Code/pde_nn/data/train101x101/random_8
+        batch_size: 64
+        shuffle: true
+        validation_split: 0.2
+        num_workers: 4
+        normalize: analytical
+        alpha: 0.1
+        scaling_factor: 1000000.0
+initializer: 'off'
+optimizer:
+    type: Adam
+    args:
+        lr: 0.0004
+        weight_decay: 0
+        amsgrad: false
+loss:
+    type: ComposedLoss
+    pipe_config: true
+    args:
+        loss_list:
+        - DirichletBoundaryLoss
+        - LaplacianLoss
+        inside_weight: 0.0
+        bound_weight: 1.0
+        elec_weight: 0.0
+        lapl_weight: 20000000.0
+        energy_weight: 0.0
+        lt_weight: 0.0
+        ltloss_num_procs: 64
+metrics:
+- residual
+- inf_norm
+- Eresidual
+- Einf_norm
+lr_scheduler:
+    type: ReduceLROnPlateau
+    plateau_metric: loss
+    args:
+        mode: min
+        factor: 0.9
+        patience: 50
+        threshold: 0.0003
+        threshold_mode: rel
+        verbose: false
+trainer:
+    epochs: 20
+    save_dir: debug/
+    save_period: 20
+    plot_period: 20
+    verbosity: 2
+    monitor: min val_loss
+    early_stop: 200
+    tensorboard: true
+    histograms: false
