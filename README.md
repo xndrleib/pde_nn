@@ -2,9 +2,9 @@
 **Heat Distribution in a Thin Metal Plate**
 
 The generalized Poisson equation for heat distribution, considering a non-constant thermal conductivity $k(x, y)$, is given by:
-\[
-\nabla \cdot (k(x, y) \nabla u(x, y)) = -q(x, y),
-\]
+
+$$\nabla \cdot (k(x, y) \nabla u(x, y)) = -q(x, y),$$
+
 where:
 - $\nabla \cdot (k(x, y) \nabla u(x, y))$ represents the divergence of the heat flux.
 - $q(x, y)$ is the heat source distribution within the plate.
@@ -16,9 +16,9 @@ In many practical scenarios, especially with metal plates, certain simplificatio
 - **Homogeneous Material**: The material properties, including thermal conductivity, are uniform throughout the plate, meaning $k(x, y) = k$ is constant across the domain.
 
 Given these properties, the thermal conductivity can be reasonably approximated as a constant. This leads to a simplified version of the Poisson equation:
-\[
-\Delta u(x, y) = -\frac{q(x, y)}{k}
-\]
+
+$$\Delta u(x, y) = -\frac{q(x, y)}{k}$$
+
 where $\Delta u(x, y)$ is the Laplacian of the temperature function, and $k$ is now treated as a constant value.
 
 ## Task
