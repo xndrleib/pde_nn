@@ -29,7 +29,7 @@ The problem requires capturing spatially structured features, and the solution s
 
 ## Data
 
-Data that was used for training and validation can be found at [Google Drive](https://drive.google.com/drive/folders/1-d3pXD5OPcvfZacoEO1Y4nfTqnbxwSK7?usp=sharing)
+Data that was used for training and validation can be found at [Google Drive](https://drive.google.com/drive/folders/1-d3pXD5OPcvfZacoEO1Y4nfTqnbxwSK7?usp=sharing).
 
 ## References
 - This repo is based on the code kingly provided by CERFACS in their [PlasmaNet repository](https://gitlab.com/cerfacs/plasmanet).
